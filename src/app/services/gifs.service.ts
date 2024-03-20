@@ -18,14 +18,21 @@ export class GifsService {
     return [...this._historial];
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+    this._historial = JSON.parse(localStorage.getItem('historial')!) || [];
+    this.resultados = JSON.parse(localStorage.getItem('resultados')!) || [];
+  }
 
   buscarGifs(query: string = '') {
 
-    query = query.trim();
+    query = query.trim().toLowerCase();
 
     if (!this._historial.includes(query)){
       this._historial.unshift(query);
+      this._historial = this._historial.splice(0, 10);
+
+      localStorage.setItem('historial', JSON.stringify(this._historial));
     }
 
     const params = new HttpParams()
@@ -38,7 +45,7 @@ export class GifsService {
       .subscribe((resp) => {
         this.resultados = resp.data;
 
-        console.log(this.resultados);
+        localStorage.setItem('resultados', JSON.stringify(this.resultados));
       });
   }
 }

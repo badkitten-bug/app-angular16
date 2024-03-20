@@ -23,4 +23,10 @@ export class BusquedaComponent implements OnInit {
     this.gifsSvc.buscarGifs(valor);
     this.txtBuscar.nativeElement.value = '';
   }
+
+  limpiar(){
+    localStorage.removeItem('historial');
+    localStorage.removeItem('resultados');
+    location.reload();
+  }
 }
