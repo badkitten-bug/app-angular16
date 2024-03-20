@@ -21,6 +21,13 @@ export class GifsService {
   constructor(private http: HttpClient) {}
 
   buscarGifs(query: string = '') {
+
+    query = query.trim();
+
+    if (!this._historial.includes(query)){
+      this._historial.unshift(query);
+    }
+
     const params = new HttpParams()
       .set('api_key', API_KEY)
       .set('limit', 20)

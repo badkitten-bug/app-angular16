@@ -1,0 +1,4 @@
+.animate__animated .animate__fadeIn{
+  --animate-duration: 3s;
+  animation-fill-mode: both;
+}
