@@ -2,3 +2,9 @@
   --animate-duration: 3s;
   animation-fill-mode: both;
 }
+
+.gif-img {
+  max-width: 100%; /* Establecer el ancho máximo al 100% del contenedor */
+  max-height: 200px; /* Establecer la altura máxima a 200px (o el valor que desees) */
+  object-fit: cover; /* Recortar la imagen para que se ajuste al tamaño definido */
+}
